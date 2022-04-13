@@ -9,12 +9,28 @@ import com.herdal.flagquizapp.databinding.ActivityQuizBinding
 class QuizActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuizBinding
+    private lateinit var questions: ArrayList<Flag>
+    // we have 3 wrong answers and 1 correct answer
+    private lateinit var wrongAnswers: ArrayList<Flag>
+    private lateinit var correctAnswer: Flag
+    private lateinit var allOptions: HashSet<Flag>
+    private lateinit var dbHelper: DatabaseHelper
+
+    private var questionCounter = 0
+    private var correctAnswerCounter = 0
+    private var wrongAnswerCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        dbHelper = DatabaseHelper(this)
+
+        val flagDao = FlagDao()
+
+        questions = flagDao.getRandom5Flags(dbHelper)
     }
 
     fun goToResultPage(view: View) {
