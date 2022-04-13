@@ -31,11 +31,23 @@ class QuizActivity : AppCompatActivity() {
         val flagDao = FlagDao()
 
         questions = flagDao.getRandom5Flags(dbHelper)
+
+        loadQuestion()
     }
 
     fun goToResultPage(view: View) {
         val intent = Intent(this,ResultActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+
+    // load question into quiz layout page
+    fun loadQuestion() {
+        binding.textViewQuestionNumber.text = "Question : ${questionCounter+1}" // get question number
+
+        correctAnswer = questions.get(questionCounter) // get correct answer
+
+        binding.imageViewFlag.setImageResource(resources.getIdentifier(correctAnswer.imageName,"drawable",packageName))
     }
 }
