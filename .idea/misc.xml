@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.35625" />
       </map>
     </option>
   </component>
