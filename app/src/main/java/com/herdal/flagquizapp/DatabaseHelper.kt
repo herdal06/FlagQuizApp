@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,"flagquiz.sqlite",null,1) {
+class DatabaseHelper(context: Context) : SQLiteOpenHelper(context,"bayrakquiz.sqlite",null,1) {
     override fun onCreate(db: SQLiteDatabase?) { // table definition
         db?.execSQL("CREATE TABLE IF NOT EXISTS 'flags' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT, 'image' TEXT)")
     }
