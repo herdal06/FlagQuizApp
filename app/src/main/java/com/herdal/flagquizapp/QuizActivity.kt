@@ -36,9 +36,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun goToResultPage(view: View) {
-        val intent = Intent(this@QuizActivity,ResultActivity::class.java)
-        startActivity(intent)
-        finish()
+        questionCounterControl()
     }
 
 
@@ -49,5 +47,16 @@ class QuizActivity : AppCompatActivity() {
         correctQuestion = questions.get(questionCounter) // get correct answer
 
         binding.imageViewFlag.setImageResource(resources.getIdentifier(correctQuestion.imageName,"drawable",packageName))
+    }
+
+    fun questionCounterControl() {
+        questionCounter++
+        if(questionCounter != 5) { // 5 questions. game is not over
+            loadQuestion()
+        } else { // game's over. intent to result activity
+            val intent = Intent(this@QuizActivity,ResultActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
