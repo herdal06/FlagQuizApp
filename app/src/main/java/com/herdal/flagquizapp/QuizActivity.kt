@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import com.herdal.flagquizapp.databinding.ActivityQuizBinding
 
 class QuizActivity : AppCompatActivity() {
@@ -33,11 +34,26 @@ class QuizActivity : AppCompatActivity() {
         questions = flagDao.getRandom5Flags(dbHelper)
 
         loadQuestion()
+
+        binding.buttonA.setOnClickListener {
+            isAnswerCorrect(binding.buttonA)
+            questionCounterControl()
+        }
+        binding.buttonB.setOnClickListener {
+            isAnswerCorrect(binding.buttonB)
+            questionCounterControl()
+        }
+        binding.buttonC.setOnClickListener {
+            isAnswerCorrect(binding.buttonC)
+            questionCounterControl()
+        }
+        binding.buttonD.setOnClickListener {
+            isAnswerCorrect(binding.buttonD)
+            questionCounterControl()
+        }
     }
 
-    fun goToResultPage(view: View) {
-        questionCounterControl()
-    }
+
 
 
     // load question into quiz layout page
@@ -73,5 +89,20 @@ class QuizActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun isAnswerCorrect(button: Button) { // checks answer is correct or wrong and increments counters
+        val buttonText = button.text.toString()
+        var correctAnswer = correctQuestion.name
+
+        if(buttonText == correctAnswer) { // answer is correct
+            correctAnswerCounter++
+        }
+        else { // answer is wrong
+            wrongAnswerCounter++
+        }
+        // write into textViews
+        binding.textViewTrue.text = "True : $correctAnswerCounter"
+        binding.textViewFalse.text = "True : $wrongAnswerCounter"
     }
 }
