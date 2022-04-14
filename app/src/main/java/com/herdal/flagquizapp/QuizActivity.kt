@@ -47,6 +47,21 @@ class QuizActivity : AppCompatActivity() {
         correctQuestion = questions.get(questionCounter) // get correct answer
 
         binding.imageViewFlag.setImageResource(resources.getIdentifier(correctQuestion.imageName,"drawable",packageName))
+
+        val flagDao = FlagDao()
+
+        wrongAnswers = flagDao.getRandom3WrongAnswers(dbHelper,correctQuestion.id)
+
+        allOptions = HashSet()
+        allOptions.add(correctQuestion)
+        allOptions.add(wrongAnswers.get(0))
+        allOptions.add(wrongAnswers.get(1))
+        allOptions.add(wrongAnswers.get(2))
+
+        binding.buttonA.text = allOptions.elementAt(0).name
+        binding.buttonB.text = allOptions.elementAt(1).name
+        binding.buttonC.text = allOptions.elementAt(2).name
+        binding.buttonD.text = allOptions.elementAt(3).name
     }
 
     fun questionCounterControl() {
