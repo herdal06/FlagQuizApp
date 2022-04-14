@@ -86,6 +86,7 @@ class QuizActivity : AppCompatActivity() {
             loadQuestion()
         } else { // game's over. intent to result activity
             val intent = Intent(this@QuizActivity,ResultActivity::class.java)
+            intent.putExtra("correctAnswerCounter",correctAnswerCounter)
             startActivity(intent)
             finish()
         }

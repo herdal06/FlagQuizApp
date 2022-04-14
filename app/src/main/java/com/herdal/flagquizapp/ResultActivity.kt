@@ -15,6 +15,11 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val correctAnswerCounter = intent.getIntExtra("correctAnswerCounter",0)
+
+        binding.textViewResult.text = "$correctAnswerCounter True ${5-correctAnswerCounter} False"
+        binding.textViewPercentage.text = "%${(correctAnswerCounter * 100) / 5} Success"
     }
 
     fun playAgain(view: View) {
