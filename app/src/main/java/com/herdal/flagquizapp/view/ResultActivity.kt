@@ -1,4 +1,4 @@
-package com.herdal.flagquizapp
+package com.herdal.flagquizapp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +23,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
     fun playAgain(view: View) {
-        val intent = Intent(this,QuizActivity::class.java)
+        val intent = Intent(this, QuizActivity::class.java)
         startActivity(intent)
         finish()
     }

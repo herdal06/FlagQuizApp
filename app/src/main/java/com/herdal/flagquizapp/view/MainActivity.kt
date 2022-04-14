@@ -1,11 +1,11 @@
-package com.herdal.flagquizapp
+package com.herdal.flagquizapp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.herdal.flagquizapp.databinding.ActivityMainBinding
-import com.info.sqlitekullanimihazirveritabani.DatabaseCopyHelper
+import com.herdal.flagquizapp.service.DatabaseCopyHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startGame(view: View) {
-        val intent = Intent(this,QuizActivity::class.java)
+        val intent = Intent(this, QuizActivity::class.java)
         startActivity(intent)
     }
 

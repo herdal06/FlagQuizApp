@@ -1,6 +1,7 @@
-package com.herdal.flagquizapp
+package com.herdal.flagquizapp.service
 
 import android.annotation.SuppressLint
+import com.herdal.flagquizapp.model.Flag
 
 // Dabase Access Object
 class FlagDao {

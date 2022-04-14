@@ -1,4 +1,4 @@
-package com.herdal.flagquizapp
+package com.herdal.flagquizapp.service
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

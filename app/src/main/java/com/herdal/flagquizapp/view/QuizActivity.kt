@@ -1,11 +1,13 @@
-package com.herdal.flagquizapp
+package com.herdal.flagquizapp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import com.herdal.flagquizapp.service.DatabaseHelper
+import com.herdal.flagquizapp.service.FlagDao
 import com.herdal.flagquizapp.databinding.ActivityQuizBinding
+import com.herdal.flagquizapp.model.Flag
 
 class QuizActivity : AppCompatActivity() {
 
@@ -85,7 +87,7 @@ class QuizActivity : AppCompatActivity() {
         if(questionCounter != 5) { // 5 questions. game is not over
             loadQuestion()
         } else { // game's over. intent to result activity
-            val intent = Intent(this@QuizActivity,ResultActivity::class.java)
+            val intent = Intent(this@QuizActivity, ResultActivity::class.java)
             intent.putExtra("correctAnswerCounter",correctAnswerCounter)
             startActivity(intent)
             finish()
