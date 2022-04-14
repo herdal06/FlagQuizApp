@@ -9,13 +9,13 @@ class FlagDao {
     fun getRandom5Flags(dbHelper: DatabaseHelper) : ArrayList<Flag> {
         val flagList = ArrayList<Flag>()
         val db = dbHelper.writableDatabase
-        val c = db.rawQuery("SELECT * FROM flags ORDER BY RANDOM() LIMIT 5",null)
+        val c = db.rawQuery("SELECT * FROM bayraklar ORDER BY RANDOM() LIMIT 5",null)
 
         while(c.moveToNext()) {
             val flag = Flag(
-                c.getInt(c.getColumnIndex("id"))
-                ,c.getString(c.getColumnIndex("name"))
-                ,c.getString(c.getColumnIndex("image"))
+                c.getInt(c.getColumnIndex("bayrak_id"))
+                ,c.getString(c.getColumnIndex("bayrak_ad"))
+                ,c.getString(c.getColumnIndex("bayrak_resim"))
             )
             flagList.add(flag)
         }
@@ -26,13 +26,13 @@ class FlagDao {
     fun getRandom5WrongAnswers(dbHelper: DatabaseHelper, flagId: Int) : ArrayList<Flag> {
         val flagList = ArrayList<Flag>()
         val db = dbHelper.writableDatabase
-        val c = db.rawQuery("SELECT * FROM flags WHERE id != $flagId ORDER BY RANDOM() LIMIT 3",null)
+        val c = db.rawQuery("SELECT * FROM bayraklar WHERE bayrak_id != $flagId ORDER BY RANDOM() LIMIT 3",null)
 
         while(c.moveToNext()) {
             val flag = Flag(
                 c.getInt(c.getColumnIndex("id"))
                 ,c.getString(c.getColumnIndex("name"))
-                ,c.getString(c.getColumnIndex("image"))
+                ,c.getString(c.getColumnIndex("imageName"))
             )
             flagList.add(flag)
         }

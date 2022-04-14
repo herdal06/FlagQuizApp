@@ -12,7 +12,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var questions: ArrayList<Flag>
     // we have 3 wrong answers and 1 correct answer
     private lateinit var wrongAnswers: ArrayList<Flag>
-    private lateinit var correctAnswer: Flag
+    private lateinit var correctQuestion: Flag
     private lateinit var allOptions: HashSet<Flag>
     private lateinit var dbHelper: DatabaseHelper
 
@@ -36,7 +36,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun goToResultPage(view: View) {
-        val intent = Intent(this,ResultActivity::class.java)
+        val intent = Intent(this@QuizActivity,ResultActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -46,8 +46,8 @@ class QuizActivity : AppCompatActivity() {
     fun loadQuestion() {
         binding.textViewQuestionNumber.text = "Question : ${questionCounter+1}" // get question number
 
-        correctAnswer = questions.get(questionCounter) // get correct answer
+        correctQuestion = questions.get(questionCounter) // get correct answer
 
-        binding.imageViewFlag.setImageResource(resources.getIdentifier(correctAnswer.imageName,"drawable",packageName))
+        binding.imageViewFlag.setImageResource(resources.getIdentifier(correctQuestion.imageName,"drawable",packageName))
     }
 }
